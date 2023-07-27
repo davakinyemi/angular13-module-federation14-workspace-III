@@ -1,0 +1,20 @@
+<div class="bg-blue-100">
+    <section class="flex flex-col container mx-auto">
+        <header class="flex flex-col py-8 border-b border-blue-500 px-6">
+            <input class="p-2 border border-blue-500 rounded mt-4" (keydown.enter)="addTodo(input)" #input
+                placeholder="What to do?" autofocus>
+        </header>
+        <section class="flex flex-col justify-center py-8 px-6">
+            <ul class="flex flex-col">
+                <app-todo *ngFor="let todo of todos$ | async" [todo]="todo" (delete)="onDelete($event)"
+                    (update)="onChange($event)"></app-todo>
+            </ul>
+        </section>
+        <footer class="py-8 border-t border-blue-500 px-6 flex justify-between">
+            <span class="text-lg"><strong>{{pendingTodosCount$ | async}}</strong> items left</span>
+            <button class="py-2 px-4 bg-gray-500 text-white rounded hover:shadow-lg" (click)="clearCompleted()">
+                Clear completed
+            </button>
+        </footer>
+    </section>
+</div>

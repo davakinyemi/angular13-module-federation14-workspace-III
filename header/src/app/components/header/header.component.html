@@ -1,0 +1,30 @@
+<div class="bg-red-100">
+    <div class="flex px-8 py-4 container mx-auto justify-between items-center">
+        <a [routerLink]="''" class="text-2xl font-bold leading-none">{{title}}</a>
+        <ul class="flex items-center">
+            <li>
+                <a [routerLink]="['/']" class="text-sm font-semibold text-gray-700 hover:text-indigo-700 px-4">Home</a>
+            </li>
+            <li class="flex items-center">
+                <a [routerLink]="['todos']"
+                    class="text-sm font-semibold text-gray-700 hover:text-indogo-700 pl-4 pr-2">Todos</a>
+                <p class="text-xs bg-red-600 text-white rounded-xl items-center px-1 mr-4">{{todosCount}}</p>
+            </li>
+            <li class="flex items-center">
+                <a [routerLink]="['tracker']"
+                    class="text-sm font-semibold text-gray-700 hover:text-indigo-700 pl-4 pr-2">Tracker</a>
+                <p class="text-xs bg-red-600 text-white rounded-xl items-center px-1 mr-4">{{trackersCount}}</p>
+            </li>
+        </ul>
+        <div>
+            <a *ngIf="!authService.isLogged" [routerLink]="['/register/signin']"
+                class="py-2 px-6 bg-white text-sm text-red-600 font-bold rounded-l-xl rounded-t-xl transition duration-200">Sign
+                In</a>
+            <a *ngIf="!authService.isLogged" [routerLink]="['/register/signup']"
+                class="py-2 px-6 bg-white text-sm text-red-600 font-bold rounded-l-xl rounded-t-xl transition duration-200">Sign
+                Up</a>
+            <button *ngIf="authService.isLogged" (click)="authService.logout()"
+                class="py-2 px-6 bg-white text-sm text-red-600 font-bold rounded-l-xl rounded-t-xl transition duration-200">Logout</button>
+        </div>
+    </div>
+</div>
